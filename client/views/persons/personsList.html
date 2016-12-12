@@ -6,14 +6,14 @@
   <div class="row">
     <div class="col-md-6">
       <!-- Puedes afinar la búsqueda indicando un rango de años, o por provincia, etc. -->
-      {{> yearSlider header="" subheader="Acotar la búsqueda entre los años:" }}
+      {{> yearSlider header="" subheader="Acotar la búsqueda entre los años" }}
       <p>
-        {{_"Subrayado en"}} <span class="row-high">{{_"amarillo"}}</span> {{_"las entradas nuevas o actualizadas recientemente."}}
+        {{_"Subrayado en"}} <span class="row-high">{{_"amarillo"}}</span> {{_"las entradas nuevas o actualizadas recientemente"}}
       </p>
       <br>
     </div>
     <div class="col-md-6">
-      <label for="provSelect" class="label-no-bold">{{_"Buscar en:"}}</label>
+      <label for="provSelect" class="label-no-bold">{{_"Buscar en"}}</label>
       <select id="provSelect" class="form-control ps-prov"></select>
       <select id="provSelect" style="display: none;" class="form-control ps-mun"></select>
       {{#if isInRole 'admin'}}
