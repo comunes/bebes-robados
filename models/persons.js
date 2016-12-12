@@ -18,23 +18,25 @@ onAfterUp = function () {
 Persons = new Mongo.Collection('Persons');
 
 var defaultDate = function (label) {
+  var lab = label;
   return {
     type: Date,
     optional: true,
-    label: label,
+    label: function () { return TAPi18n.__(lab); },
     autoform: {
       afFieldInput: {
         type: 'bootstrap-datepicker',
-        placeholder: TAPi18n.__('dia/mes/año')
+        placeholder: function () { return TAPi18n.__('dia/mes/año'); }
       }
     }
   };
 };
 
 var defaultMap = function (label) {
+  var lab = label;
   return {
     type: String,
-    label: label,
+    label: function () { return TAPi18n.__(lab); },
     optional: true
   };
 };
@@ -42,6 +44,8 @@ var defaultMap = function (label) {
 var defaultAutocomplete = function (field, textarea) {
   if (Meteor.isClient) {
     var template;
+    var msg = textarea? function () { return TAPi18n.__('Lista de nombres y apellidos, sobrenombres o apodos'); } :
+        function () { return TAPi18n.__('Nombre y apellidos, sobrenombre o apodo');};
     switch (field) {
     case 'lugarNacimiento':
       template = Template.autoLugarNacimiento;
@@ -77,7 +81,7 @@ var defaultAutocomplete = function (field, textarea) {
     return {
       afFieldInput: {
         type: textarea ? 'autocomplete-textarea' : 'autocomplete-input',
-        placeholder: textarea ? TAPi18n.__('Lista de nombres y apellidos, sobrenombres o apodos') : TAPi18n.__('Nombre y apellidos, sobrenombre o apodo'),
+        placeholder: msg,
         settings: function () {
           return {
             position: 'bottom',
@@ -98,108 +102,113 @@ var defaultAutocomplete = function (field, textarea) {
   return {};
 };
 
+var trueI18n = function() { return TAPi18n.__('Sí'); };
+var falseI18n = function() { return TAPi18n.__('No'); };
+
+function tw(key) { return TAPi18n.__(key); }
+
 Schema.Persons = new SimpleSchema({
   // mismo defaultValue en Template.bebeForm.helpers buscasBebe
-  buscasBebe: { type: Boolean, defaultValue: true, optional: false, label: TAPi18n.__('¿Qué buscas?'),
-                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('a un bebe robado'), falseLabel: TAPi18n.__('a mi familia biológica')}}},
-  parentesco: { type: String, label: TAPi18n.__('Parentesco con el presunto niño/a robado:'), optional: true, allowedValues: [
+  buscasBebe: { type: Boolean, defaultValue: true, optional: false, i18nLabel: '¿Qué buscas?',
+                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: function() { return TAPi18n.__('a un bebe robado'); }, falseLabel: function() { return TAPi18n.__('a mi familia biológica');}}}},
+  parentesco: { type: String, i18nLabel: 'Parentesco con el presunto niño/a robado', optional: true, allowedValues: [
     'Madre', 'Padre', 'Cónyuge', 'Abuela', 'Abuelo', 'Hermana', 'Hermano', 'Otro'
   ] },
   familiar: {type: String, optional: true, autoValue: function () { if (this.isInsert) { return this.userId; } }},
-  nombreCompleto: { type: String, label: TAPi18n.__('Nombre completo del niño/a si llegó a registrarse:'), optional: true },
-  fechaNacimiento: defaultDate(TAPi18n.__('Fecha de nacimiento:')),
-  fechaNacimientoEsAprox: { type: Boolean, optional: true, label: TAPi18n.__('¿es esta fecha aproximada?'),
-                            autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
-  sexo: { type: String, label: 'Sexo:', allowedValues: ['Desconocido', 'Hombre', 'Mujer', 'Otro'] },
+  nombreCompleto: { type: String, i18nLabel: 'Nombre completo del niño/a si llegó a registrarse', optional: true },
+  fechaNacimiento: defaultDate('Fecha de nacimiento'),
+  fechaNacimientoEsAprox: { type: Boolean, optional: true, i18nLabel: '¿es esta fecha aproximada?',
+                            autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
+  sexo: { type: String, i18nLabel: 'Sexo', allowedValues: ['Desconocido', 'Hombre', 'Mujer', 'Otro'] },
   // geocomplete!!! https://atmospherejs.com/jeremy/geocomplete
-  lugarNacimiento: _.extend(defaultMap(TAPi18n.__('Lugar de nacimiento:')), {autoform: defaultAutocomplete('lugarNacimiento', false)}),
-  lugarNacimientoDireccion: {type: String, optional: true, label: TAPi18n.__('Dirección:')},
-  lugarNacimientoProvincia: {type: String, optional: true, label: TAPi18n.__('Provincia:')},
-  lugarNacimientoProvinciaNombre: {type: String, optional: true, label: TAPi18n.__('Provincia:'), autoform: {type: 'hidden'}},
-  lugarNacimientoMunicipio: {type: String, optional: true, label: TAPi18n.__('Municipio:')},
-  lugarNacimientoMunicipioNombre: {type: String, optional: true, label: TAPi18n.__('Municipio:'), autoform: {type: 'hidden'}},
-  lugarNacimientoPais: {type: String, optional: true, label: TAPi18n.__('País:'), allowedValues: ['España', 'Otro']},
+  lugarNacimiento: _.extend(defaultMap('Lugar de nacimiento'), {autoform: defaultAutocomplete('lugarNacimiento', false)}),
+  lugarNacimientoDireccion: {type: String, optional: true, i18nLabel: 'Dirección'},
+  lugarNacimientoProvincia: {type: String, optional: true, i18nLabel: 'Provincia'},
+  lugarNacimientoProvinciaNombre: {type: String, optional: true, label: 'Provincia', autoform: {type: 'hidden'}},
+  lugarNacimientoMunicipio: {type: String, optional: true, i18nLabel: 'Municipio'},
+  lugarNacimientoMunicipioNombre: {type: String, optional: true, label: 'Municipio', autoform: {type: 'hidden'}},
+  lugarNacimientoPais: {type: String, optional: true, i18nLabel: 'País', allowedValues: ['España', 'Otro']},
   lugarNacimientoLatitud: {type: String, optional: true, label: 'Latitud:', autoform: {type: 'hidden'}},
   lugarNacimientoLongitud: {type: String, optional: true, label: 'Longitud:', autoform: {type: 'hidden'}},
-  fechaFallecimiento: defaultDate(TAPi18n.__('Fecha del fallecimiento:')),
-  fechaFallecimientoEsAprox: { type: Boolean, optional: true, label: TAPi18n.__('¿La fecha del fallecimiento es aproximada?'),
-                               autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
-  nombreCompletoMadre: { type: String, optional: true, label: TAPi18n.__('Nombre y apellidos de la madre:') },
-  nombreCompletoPadreOConyuge: { type: String, optional: true, label: TAPi18n.__('Nombre y apellidos del padre:') },
-  motivoMuerte: { type: String, optional: true, label: TAPi18n.__('Motivo de la muerte que figura en los documentos que obran en su poder o según la información que les facilitaron en su momento:') },
-  vistoCadaver: {type: Boolean, optional: true, label: TAPi18n.__('¿Vio algún miembro de la familia el cadaver?'),
-                 autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  fechaFallecimiento: defaultDate('Fecha del fallecimiento'),
+  fechaFallecimientoEsAprox: { type: Boolean, optional: true, i18nLabel: '¿La fecha del fallecimiento es aproximada?',
+                               autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
+  nombreCompletoMadre: { type: String, optional: true, i18nLabel: 'Nombre y apellidos de la madre' },
+  nombreCompletoPadreOConyuge: { type: String, optional: true, i18nLabel: 'Nombre y apellidos del padre' },
+  motivoMuerte: { type: String, optional: true, i18nLabel: 'Motivo de la muerte que figura en los documentos que obran en su poder o según la información que les facilitaron en su momento' },
+  vistoCadaver: {type: Boolean, optional: true, i18nLabel: '¿Vio algún miembro de la familia el cadaver?',
+                 autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   noVistoCadaverRazon: {
-    type: String, optional: true, label: TAPi18n.__('¿Por qué no lo vio?'),
+    type: String, optional: true, i18nLabel: '¿Por qué no lo vio?',
     autoform: {
       type: 'select-radio',
       options: function () {
         return [
-          {label: TAPi18n.__('No tuvimos fuerzas para ver el cadáver.'), value: 'sinfuerzas'},
-          {label: TAPi18n.__('No nos dejaron. El niño estaba muy desfigurado.'), value: 'desfigurado'},
-          {label: TAPi18n.__('No nos dejaron. Lo habían enterrado sin decir nada a la familia.'), value: 'enterrado'},
-          {label: TAPi18n.__('No nos dejaron. Otras razones.'), value: 'otras'}
+          {label: tw('No tuvimos fuerzas para ver el cadáver'), value: 'sinfuerzas'},
+          {label: tw('No nos dejaron El niño estaba muy desfigurado'), value: 'desfigurado'},
+          {label: tw('No nos dejaron Lo habían enterrado sin decir nada a la familia'), value: 'enterrado'},
+          {label: tw('No nos dejaron Otras razones'), value: 'otras'}
         ];
       }
     }
   },
-  noVistoCadaverOtrasRazones: {type: String, optional: true, label: TAPi18n.__('¿Qué otras razones?')},
-  entierroPorHospital: {type: Boolean, optional: true, label: TAPi18n.__('¿Se hizo cargo del entierro el hospital?'),
-                        autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  noVistoCadaverOtrasRazones: {type: String, optional: true, i18nLabel: '¿Qué otras razones?'},
+  entierroPorHospital: {type: Boolean, optional: true, i18nLabel: '¿Se hizo cargo del entierro el hospital?',
+                        autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   entierroPorHospitalMotivos: {
-    type: String, optional: true, label: TAPi18n.__('¿Por qué se hizo cargo del entierro el hospital?'),
+    type: String, optional: true, i18nLabel: '¿Por qué se hizo cargo del entierro el hospital?',
     autoform: {
       type: 'select-radio',
       options: function () {
         return [
-          {label: TAPi18n.__('La familia no disponía de seguro de entierro y el hospital se ofreció a pagar y gestionar el entierro.'), value: 'sinseguro'},
-          {label: TAPi18n.__('La familia disponía de seguro de entierro pero el hospital ni siquiera preguntó.'), value: 'conseguro'},
-          {label: TAPi18n.__('Otras razones.'), value: 'otras'}
+          {label: tw('La familia no disponía de seguro de entierro y el hospital se ofreció a pagar y gestionar el entierro'), value: 'sinseguro'},
+          {label: tw('La familia disponía de seguro de entierro pero el hospital ni siquiera preguntó'), value: 'conseguro'},
+          {label: tw('Otras razones'), value: 'otras'}
         ];
       }
     }
   },
-  entierroPorHospitalOtrasRazones: {type: String, optional: true, label: TAPi18n.__('¿Qué otras razones?')},
-  cementerioEnterrado: _.extend(defaultMap(TAPi18n.__('¿En qué cementerio fue enterrado?')), {autoform: defaultAutocomplete('cementerioEnterrado', false)}),
-  cementerioEnterradoDireccion: {type: String, optional: true, label: TAPi18n.__('Dirección:')},
+  entierroPorHospitalOtrasRazones: {type: String, optional: true, i18nLabel: '¿Qué otras razones?'},
+  cementerioEnterrado: _.extend(defaultMap('¿En qué cementerio fue enterrado?'), {autoform: defaultAutocomplete('cementerioEnterrado', false)}),
+  cementerioEnterradoDireccion: {type: String, optional: true, i18nLabel: 'Dirección'},
   cementerioEnterradoLatitud: {type: String, optional: true, label: 'Latitud:'},
   cementerioEnterradoLongitud: {type: String, optional: true, label: 'Longitud:'},
-  posibilidadPruebasADN: {type: Boolean, label:TAPi18n.__( '¿Esta en una sepultura perpetua con posibilidades de exhumación para realizar pruebas de ADN?'), optional: true,
-                          autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
-  sepulturaTemporalPruebasADN: {type: Boolean, label: TAPi18n.__('¿Está en una sepultura temporal colectiva (5 o más cuerpos) con posibilidades de exhumación para realizar pruebas de ADN?'), optional: true,
-                                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
-  enOsarioComun: {type: Boolean, label: TAPi18n.__('¿Está en un osario común?'), optional: true,
-                  autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
-  enOsarioComunDesdeFecha: defaultDate(TAPi18n.__('¿Desde que fecha en osario común?')),
-  motivosSospecha: {type: String, optional: true, label: TAPi18n.__('Motivos por el que sospecha de que el niño/a no falleció realmente y pudo ser robado:')},
-  nombreCompletoMedico: { type: String, optional: true, label: TAPi18n.__('Nombre completo del médico:'), index: 1,
+  posibilidadPruebasADN: {type: Boolean, i18nLabel: '¿Está en una sepultura perpetua con posibilidades de exhumación para realizar pruebas de ADN?', optional: true,
+                          autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
+  sepulturaTemporalPruebasADN: {type: Boolean, i18nLabel: '¿Está en una sepultura temporal colectiva (5 o más cuerpos) con posibilidades de exhumación para realizar pruebas de ADN?', optional: true,
+                                autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
+  enOsarioComun: {type: Boolean, i18nLabel: '¿Está en un osario común?', optional: true,
+                  autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
+  enOsarioComunDesdeFecha: defaultDate('¿Desde que fecha en osario común?'),
+  motivosSospecha: {type: String, optional: true, i18nLabel: 'Motivos por el que sospecha de que el niño/a no falleció realmente y pudo ser robado'},
+  nombreCompletoMedico: { type: String, optional: true, i18nLabel: 'Nombre completo del médico', index: 1,
                           autoform: defaultAutocomplete('nombreCompletoMedico', false) },
-  nombreCompletoMatrona: { type: String, optional: true, label: TAPi18n.__('Nombre completo de la matrona:'), index: 1,
+  nombreCompletoMatrona: { type: String, optional: true, i18nLabel: 'Nombre completo de la matrona', index: 1,
                            autoform: defaultAutocomplete('nombreCompletoMatrona', false) },
-  nombreCompletoEnfermera: { type: String, optional: true, label: TAPi18n.__('Nombre completo de la enfermera:'), index: 1,
+  nombreCompletoEnfermera: { type: String, optional: true, i18nLabel: 'Nombre completo de la enfermera', index: 1,
                              autoform: defaultAutocomplete('nombreCompletoEnfermera', false) },
-  nombreOtroPersonalMedico: { type: String, label: TAPi18n.__('Nombre de algún otro miembro del personal médico, de enfermería, de dirección o administración del centro médico:'), optional: true, index: 1,
+  nombreOtroPersonalMedico: { type: String, i18nLabel: 'Nombre de algún otro miembro del personal médico, de enfermería, de dirección o administración del centro médico', optional: true, index: 1,
                               autoform: defaultAutocomplete('nombreOtroPersonalMedico', true) },
-  nombreFuncionariosRegCivil: { type: String, optional: true, label: TAPi18n.__('Nombres de funcionarios del Registro Civil:'), index: 1,
+  nombreFuncionariosRegCivil: { type: String, optional: true, i18nLabel: 'Nombres de funcionarios del Registro Civil', index: 1,
                                 autoform: defaultAutocomplete('nombreFuncionariosRegCivil', false) },
-  nombreFuncionariosCementario: { type: String, optional: true, label: TAPi18n.__('Nombres de funcionarios del cementerio:'), index: 1,
+  nombreFuncionariosCementario: { type: String, optional: true, i18nLabel: 'Nombres de funcionarios del cementerio', index: 1,
                                   autoform: defaultAutocomplete('nombreFuncionariosCementario', false)},
-  nombreTrabajadoresFuneraria: { type: String, optional: true, label: TAPi18n.__('Nombres de trabajadores de funerarias:'), index: 1,
+  nombreTrabajadoresFuneraria: { type: String, optional: true, i18nLabel: 'Nombres de trabajadores de funerarias', index: 1,
                                  autoform: defaultAutocomplete('nombreTrabajadoresFuneraria', false)},
-  nombreOtrosFuncionariosOTrabajadores: { type: String, optional: true, label: TAPi18n.__('Nombres de otros funcionarios o trabajadores:'), index: 1,
+  nombreOtrosFuncionariosOTrabajadores: { type: String, optional: true, i18nLabel: 'Nombres de otros funcionarios o trabajadores', index: 1,
                                           autoform: defaultAutocomplete('nombreOtrosFuncionariosOTrabajadores', true) },
-  gestionesRealizadasYDocumentos: {type: String, optional: true, label: TAPi18n.__('Gestiones realizadas y documentos conseguidos:')},
-  denunciaEnComisaria: {type: Boolean, optional: true, label: TAPi18n.__('¿Ha puesto denuncia en la Comisaría?'),
-                        autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  gestionesRealizadasYDocumentos: {type: String, optional: true, i18nLabel: 'Gestiones realizadas y documentos conseguidos'},
+  denunciaEnComisaria: {type: Boolean, optional: true, i18nLabel: '¿Ha puesto denuncia en la Comisaría?',
+                        autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   denunciaEnComisariaEstadoTramitacion: {type: String, optional: true},
-  denunciaEnGuardiaCivil: {type: Boolean, optional: true, label: TAPi18n.__('¿Ha puesto denuncia en la Guardia Civil?'),
-                           autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  denunciaEnGuardiaCivil: {type: Boolean, optional: true, i18nLabel: '¿Ha puesto denuncia en la Guardia Civil?',
+                           autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   denunciaEnGuardiaCivilEstadoTramitacion: {type: String, optional: true},
-  denunciaEnFiscalia: {type: Boolean, optional: true, label: TAPi18n.__('¿Ha puesto denuncia en la Fiscalía?'),
-                       autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  denunciaEnFiscalia: {type: Boolean, optional: true, i18nLabel: '¿Ha puesto denuncia en la Fiscalía?',
+                       autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   denunciaEnFiscaliaEstadoTramitacion: {type: String, optional: true},
-  denunciaEnJuzgado: {type: Boolean, optional: true, label: TAPi18n.__('¿Ha puesto denuncia en el Juzgado?'),
-                      autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: TAPi18n.__('Sí'), falseLabel: TAPi18n.__('No')}}},
+  denunciaEnJuzgado: {type: Boolean, optional: true, i18nLabel: '¿Ha puesto denuncia en el Juzgado?',
+                      autoform: {afFieldInput: {type: 'boolean-radios', trueLabel: trueI18n, falseLabel: falseI18n}}},
   denunciaEnJuzgadoEstadoTramitacion: {type: String, optional: true},
   photos: {
     type: [String],
@@ -215,7 +224,7 @@ Schema.Persons = new SimpleSchema({
   },
   attachs: {
     type: [String],
-    label: 'Documentos relacionados que quieran aportar', optional: true
+    i18nLabel: 'Documentos relacionados que quieran aportar', optional: true
   },
   'attachs.$': {
     autoform: {

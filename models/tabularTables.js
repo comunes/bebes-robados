@@ -9,7 +9,7 @@ TabularTables = {};
 
 // https://datatables.net/reference/option/
 var tabLanguageEs = {
-  'sProcessing': TAPi18n.__('Procesando...'),
+  'sProcessing': TAPi18n.__('Procesando'),
   'sLengthMenu': TAPi18n.__('Mostrar _MENU_ resultados'),
   'sZeroRecords': TAPi18n.__('No se encontraron resultados'),
   'sEmptyTable': TAPi18n.__('Ningún dato disponible'),
@@ -17,10 +17,10 @@ var tabLanguageEs = {
   'sInfoEmpty': TAPi18n.__('Mostrando del 0 al 0 de un total de 0'),
   'sInfoFiltered': TAPi18n.__('(filtrado de un total de _MAX_)'),
   'sInfoPostFix': '',
-  'sSearch': TAPi18n.__('Buscar:'),
+  'sSearch': TAPi18n.__('Buscar'),
   'sUrl': '',
   'sInfoThousands': ',',
-  'sLoadingRecords': TAPi18n.__('Cargando...'),
+  'sLoadingRecords': TAPi18n.__('Cargando'),
   'oPaginate': {
     'sFirst': TAPi18n.__('Primero'),
     'sLast': TAPi18n.__('Último'),

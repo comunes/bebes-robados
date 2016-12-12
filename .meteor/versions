@@ -87,6 +87,7 @@ francocatena:status@1.5.3
 gadicohen:robots-txt@0.0.10
 gadicohen:sitemaps@0.0.26
 geojson-utils@1.0.10
+gildaspk:simpleschema-tapi18n-labels@0.0.2
 gwendall:body-events@0.1.6
 gwendall:simple-schema-i18n@0.2.3
 hinas:meteor-bootstrap-confirmation@0.9.0

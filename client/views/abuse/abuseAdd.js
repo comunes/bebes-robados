@@ -17,8 +17,8 @@ AutoForm.hooks({
             'sendNotifToRole',
             ['admin',
              TAPi18n.__('Nuevo informe de abuso'),
-             TAPi18n.__('Hay un nuevo informe de abuso proporcionado por un usuario.\n\n ') +
-             TAPi18n.__('Para más información accede al área de administración.')],
+             TAPi18n.__('Hay un nuevo informe de abuso proporcionado por un usuario') +
+             TAPi18n.__('Para más información accede al área de administración')],
             true);
           $('#usar').collapse('hide');
         } else {

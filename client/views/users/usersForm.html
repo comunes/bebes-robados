@@ -7,7 +7,7 @@
       {{> avatar size="large" user=doc shape="circle" }}
     </div>
     <div class="col-xs-10">
-      {{_ intro}} {{#if isEqual type "update"}}{{_"No todos tus datos serán visibles a otras personas."}} <a href="{{pathFor 'viewUser' _id=doc.username}}">{{_"Aquí puedes consultar como ven otras personas tu perfil"}}</a>. {{/if}}
+      {{_ intro}} {{#if isEqual type "update"}}{{_"No todos tus datos serán visibles a otras personas"}} <a href="{{pathFor 'viewUser' _id=doc.username}}">{{_"Aquí puedes consultar como ven otras personas tu perfil"}}</a>. {{/if}}
     </div>
   </div>
   <br>
