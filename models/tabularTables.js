@@ -17,7 +17,7 @@ var tabLanguageEs = {
   'sInfoEmpty': TAPi18n.__('Mostrando del 0 al 0 de un total de 0'),
   'sInfoFiltered': TAPi18n.__('(filtrado de un total de _MAX_)'),
   'sInfoPostFix': '',
-  'sSearch': TAPi18n.__('Buscar'),
+  'sSearch': TAPi18n.__('Buscar') + ':',
   'sUrl': '',
   'sInfoThousands': ',',
   'sLoadingRecords': TAPi18n.__('Cargando'),
