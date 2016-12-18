@@ -5,7 +5,8 @@ Template.header.helpers({
     return siteSettings.get('site-main-name');
   },
   siteSubName: function () {
-    return siteSettings.get('site-main-subname');
+    var subname = siteSettings.get('site-main-subname');
+    return undef(subname)? '': TAPi18n.__(subname);
   }
 });
 
