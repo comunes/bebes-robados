@@ -1,9 +1,10 @@
-/* global Meteor Session TAPi18n */
-if (Meteor.isClient) {
-  Meteor.startup(function () {
+/* global Meteor Session TAPi18n getUserLanguage console Tracker */
+Meteor.startup(function () {
+  Tracker.autorun(function () {
+    var lang = getUserLanguage();
     Session.set("showLoadingIndicator", true);
-
-    TAPi18n.setLanguage(getUserLanguage())
+    console.log("Language: " + lang);
+    TAPi18n.setLanguage(lang)
       .done(function () {
         Session.set("showLoadingIndicator", false);
       })
@@ -12,4 +13,4 @@ if (Meteor.isClient) {
         console.log(error_message);
       });
   });
-}
+});

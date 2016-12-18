@@ -1,4 +1,4 @@
-/* global Template Meteor success alertMessage $ Session Tracker Router SEO _ TAPi18n */
+/* global Template Meteor success alertMessage $ Session Tracker Router SEO _ TAPi18n document */
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle (array) {
@@ -63,16 +63,22 @@ Template.basicLayout.events({
 
 // https://stackoverflow.com/questions/14036248/meteor-setting-the-document-title
 Session.setDefault('DocumentTitle', '');
-Session.setDefault('DocumentTitleMain', Meteor.App.NAME);
+Session.setDefault('SiteName', '');
 Tracker.autorun(function () {
   var sessionTitle = Session.get('DocumentTitle');
-  var site = Session.get('DocumentTitleMain');
+  var subname = Session.get('SiteName');
+  var site = Meteor.App.NAME + (subname.length > 0 ?  ': ' + TAPi18n.__(subname): '');
+  // console.log("site: " + site);
+  // console.log("site subname: " + subname);
+  // console.log("site title: " + sessionTitle);
+  // sessionTitle can be null
+  // If we have , then also translate
   var newTitle = sessionTitle === site ? sessionTitle
         : (typeof sessionTitle === 'undefined' || sessionTitle.length === 0)
         ? site
-        : (sessionTitle + ' - ' + site);
-  // console.log(newTitle);
+        : (TAPi18n.__(sessionTitle) + ' - ' + site);
   _.defer(function () {
+    console.log("Doc title: " + newTitle);
     document.title = newTitle;
     SEO.set({ title: newTitle, meta: { 'description': newTitle + '. ' + Meteor.App.DESCRIPTION } });
   });

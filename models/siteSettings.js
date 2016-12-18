@@ -1,5 +1,5 @@
-/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor
- defaultCreatedAt Session*/
+/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor Session
+ defaultCreatedAt Session */
 
 siteSettings = new Mongo.Collection('siteSettings');
 
@@ -7,7 +7,7 @@ siteSettings.get = function (name) {
   var setting = siteSettings.findOne({
     name: name
   });
-  return setting != null ? setting.value : void 0;
+  return typeof setting === 'object' ? setting.value : void 0;
 };
 
 siteSettings.getSchema = function (type) {
@@ -35,21 +35,13 @@ siteSettings.observe = function (name, callback) {
 siteSettings.observe('site-main-subname',
                      function (value) {
                        var main = siteSettings.get('site-main-name');
-                       Meteor.App = { NAME: main + ': ' + value };
-                       if (Meteor.isClient) {
-                         Session.set('DocumentTitleMain', Meteor.App.NAME);
-                       }
+                       Meteor.App['NAME'] = main;
+                       Meteor.App['SUBNAME'] = value;
+                       Session.set('SiteName', value);
                      });
+
 siteSettings.observe('site-main-description',
                      function (value) { Meteor.App['DESCRIPTION'] = value; });
-
-if (Meteor.isServer) {
-  // About null autopublish
-  // http://support.kadira.io/knowledgebase/articles/379961-what-is-null-autopublish-publication
-  Meteor.publish(null, function () {
-    return siteSettings.find();
-  });
-}
 
 siteSettings.allow({
   insert: function (userId, doc) {
