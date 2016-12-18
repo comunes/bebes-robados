@@ -1,4 +1,4 @@
-/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor
+/* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor Session
  defaultCreatedAt Session */
 
 siteSettings = new Mongo.Collection('siteSettings');
@@ -35,10 +35,9 @@ siteSettings.observe = function (name, callback) {
 siteSettings.observe('site-main-subname',
                      function (value) {
                        var main = siteSettings.get('site-main-name');
-                       Meteor.App['NAME'] = main + ': ' + value;
-                       if (Meteor.isClient) {
-                         Session.set('DocumentTitleMain', Meteor.App.NAME);
-                       }
+                       Meteor.App['NAME'] = main;
+                       Meteor.App['SUBNAME'] = value;
+                       Session.set('SiteName', value);
                      });
 
 siteSettings.observe('site-main-description',

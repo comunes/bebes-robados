@@ -12,6 +12,7 @@ Schema.UserProfile = new SimpleSchema({
   name: { type: String, optional: true, i18nLabel: 'Nombre completo',
           autoform: {afFieldInput:
                      {placeholder: TAPi18n.__('Nombre y apellidos')}}},
+  lang: { type: String, optional: true },
   dni: { type: String, optional: false, i18nLabel: 'DNI (número y letra)',
 
          regEx: /^\d{8}[A-Z]$/,

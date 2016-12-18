@@ -1,4 +1,4 @@
-/* global Template Router $ siteSettings Dispatcher TAPi18n */
+/* global Template Router $ siteSettings Dispatcher TAPi18n undef Meteor */
 
 Template.header.helpers({
   siteName: function () {
@@ -36,6 +36,9 @@ Template.header.events(Dispatcher.events);
 Template.i18nmenu.events({
   // set language to selected option's tag
   'click .tap-i18n-dropdown ul li a' : function () {
+    if (Meteor.user()) {
+      Meteor.users.update(Meteor.userId(), {$set: {"profile.lang": this.tag}});
+    }
     return TAPi18n.setLanguageAmplify(this.tag);
   }
 });

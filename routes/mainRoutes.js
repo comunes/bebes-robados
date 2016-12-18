@@ -1,4 +1,4 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ TAPi18n */
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ */
 
 // https://iron-meteor.github.io/iron-router/
 
@@ -50,7 +50,7 @@ Router.map(function () {
   }); // just for testing
   this.route('personsList', {
     path: '/bebes',
-    title: TAPi18n.__('Busca bebe o familia'),
+    title: 'Busca bebe o familia',
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -61,7 +61,7 @@ Router.map(function () {
   });
   this.route('difusion', {
     path: '/difusion',
-    title: TAPi18n.__('Campañas de Difusión'),
+    title: 'Campañas de Difusión',
     // https://github.com/iron-meteor/iron-router/issues/1148
     loadingTemplate: 'loading',
     waitOn: function () {
@@ -75,7 +75,7 @@ Router.map(function () {
     path: '/carteles',
     layoutTemplate: 'blankLayout',
     loadingTemplate: 'loadingBlank',
-    title: TAPi18n.__('Carteles de nuestras Campañas de Difusión'),
+    title: 'Carteles de nuestras Campañas de Difusión',
     waitOn: function () {
       return [
         subsManager.subscribe('settings'),
@@ -99,7 +99,7 @@ Router.map(function () {
   });
   this.route('abuseAdd', {
     path: '/reportar/:username',
-    title: TAPi18n.__('Informar de abuso'),
+    title: 'Informar de abuso',
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -112,11 +112,11 @@ Router.map(function () {
   });
   this.route('underConstruction', {
     path: '/en-construccion',
-    title: TAPi18n.__('En construcción')
+    title: 'En construcción'
   });
   this.route('userUpdate', {
     path: '/yo',
-    title: TAPi18n.__('Mis datos'),
+    title: 'Mis datos',
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -155,56 +155,56 @@ Router.map(function () {
 
   this.route('quienes', {
     path: '/quienesSomos',
-    title: TAPi18n.__('Quienes somos'),
+    title: 'Quienes somos',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('legal', {
     path: '/legal',
-    title: TAPi18n.__('Información Legal'),
+    title: 'Información Legal',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('donaciones', {
     path: '/donaciones',
-    title: TAPi18n.__('Donaciones'),
+    title: 'Donaciones',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('proteccion', {
     path: '/proteccion-datos',
-    title: TAPi18n.__('Protección de Datos'),
+    title: 'Protección de Datos',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('contacto', {
     path: '/contacto',
-    title: TAPi18n.__('Contacto'),
+    title: 'Contacto',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('otras', {
     path: '/otras-iniciativas',
-    title: TAPi18n.__('Otras Iniciativas'),
+    title: 'Otras Iniciativas',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('denuncia', {
     path: '/denuncia',
-    title: TAPi18n.__('Denuncia vuestro caso'),
+    title: 'Denuncia vuestro caso',
     loadingTemplate: 'loading',
     waitOn: subWebPage, data: dataWebPage
   });
 
   this.route('bebePage', {
     path: '/edita-bebe-id/:_id',
-    title: TAPi18n.__('Edita bebe'),
+    title: 'Edita bebe',
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -217,7 +217,7 @@ Router.map(function () {
   });
   this.route('editPersonSlug', {
     path: '/edita-bebe/:slug',
-    title: TAPi18n.__('Edita bebe'),
+    title: 'Edita bebe',
     loadingTemplate: 'loading',
     waitOn: function () {
       return [
@@ -257,7 +257,7 @@ Router.map(function () {
 
   this.route('admin', {
     path: '/admin',
-    title: TAPi18n.__('Administración'),
+    title: 'Administración',
     loadingTemplate: 'loading',
     template: 'bebeAdmin',
     onBeforeAction: function () {
