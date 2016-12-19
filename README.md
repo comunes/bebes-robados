@@ -47,6 +47,7 @@ Sample of settings to use sentry & raven:
 
 ## Desarrolladores
 
+- Jose González Besteiro, traducción al Gallego (entre otras cosas)
 - [@sergigres](https://twitter.com/sergigres), traducción al catalán (moltes gracies!) y francés (merci!)
 - [@vjrj](https://github.com/vjrj)
 
