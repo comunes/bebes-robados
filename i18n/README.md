@@ -1,7 +1,7 @@
 # Ayúdanos a traducir este software y nuestra web
 
-Edita la versión en español de nuestros textos [es.i18n.json](es.i18n.json), tradúcela a tu idioma (o mejora una traducción ya existente en este directorio), y envíanosla.
-
-Por ejemplo, del par `"Home": "Inicio"`, solo deberías truducir la segunda parte, es decir, "Inicio" a tu idioma y así con el resto de pares.
+Para ello puedes usar nuestra herramienta de traducción:
+http://translate.comunes.org/projects/reune/web-reune/
+Necesitas registrarte para ello en la web anterior (pudes usar una cuenta de Google o cualquier otro correo), y pulsar en "Traducir" a tu idioma (o mejorar una traducción existente).
 
 Gracias !

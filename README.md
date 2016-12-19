@@ -47,7 +47,9 @@ Sample of settings to use Open Web Analytics:
 
 ## Desarrolladores
 
+- [@sergigres](https://twitter.com/sergigres), traducción al catalán (moltes gracies!)
 - [@vjrj](https://github.com/vjrj)
+
 
 ## Licencia
 
