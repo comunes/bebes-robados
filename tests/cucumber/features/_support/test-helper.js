@@ -42,4 +42,4 @@ goHome = function (client) {
 // do not fails in chrome/firefox
 phantomJs = process.env.PHANTOMJS;
 
-appName = 'REUNE: Red Ciudadana de Búsqueda de Bebes Robados';
+appName = 'REUNE: Citizen Search Network for Stolen Babies';

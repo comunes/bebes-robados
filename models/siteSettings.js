@@ -37,7 +37,9 @@ siteSettings.observe('site-main-subname',
                        var main = siteSettings.get('site-main-name');
                        Meteor.App['NAME'] = main;
                        Meteor.App['SUBNAME'] = value;
-                       Session.set('SiteName', value);
+                       if (Meteor.isClient) {
+                         Session.set('SiteName', value);
+                       }
                      });
 
 siteSettings.observe('site-main-description',
