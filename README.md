@@ -32,15 +32,15 @@ chimp --ddp=http://localhost:3000         # to do all the tests
 
 ## Settings
 
-Sample of settings to use Open Web Analytics:
+Sample of settings to use sentry & raven:
 
 ```
     "public": {
         "isProduction": true,
-        "owa": {
-            "owaUrl": "https://leguin.comunes.org/owa/",
-            "owaSiteId": "someOWAId"
-        }
+        "ravenClientDSN": "https://XXXXXXXXXXXXXX@example.com/X"
+    },
+    "private": {
+        "ravenServerDSN": "https://XXXXXXXXXXXXX:XXXXXXXXXXXX@example.com/X"
     }
 }
 ```
