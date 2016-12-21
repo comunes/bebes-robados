@@ -63,6 +63,14 @@ Template.personsList.onCreated(function () {
 });
 
 Template.personsList.onRendered(function () {
+  // https://github.com/aldeed/meteor-tabular/issues/53#issuecomment-70870232
+  _.each($('thead tr th'), function (o) {
+    var title = $(o).html();
+    if (title !== '...') {
+      $(o).html(TAPi18n.__(title));
+    }
+  });
+
   var searchInput = $('#personsTable_filter > label > input');
 
   var dataTable = $('#personsTable').closest('table').DataTable();

@@ -138,22 +138,22 @@ TabularTables.Persons = new Tabular.Table({
        };
      }
     },
-    {data: 'parentesco', title: TAPi18n.__('¿Quién?'), render: renderFamiliar, className: 'column-center'},
-    {data: 'buscasBebe', title: TAPi18n.__('Busca'),
+    {data: 'parentesco', title: '¿Quién?', render: renderFamiliar, className: 'column-center'},
+    {data: 'buscasBebe', title: 'Busca',
      render: renderBuscasBebe, className: 'column-center'},
-    {data: 'nombreCompleto', title: TAPi18n.__('Nombre del niño/a')},
-    {data: 'sexo', title: TAPi18n.__('Sexo'), render: renderSexo,
+    {data: 'nombreCompleto', title: 'Nombre del niño/a'},
+    {data: 'sexo', title: 'Sexo', render: renderSexo,
      className: 'column-center'},
 
     {data: 'fechaNacimientoEsAprox', title: '',
      render: renderAprox, visible: false },
-    {data: 'fechaNacimiento', title: TAPi18n.__('Fecha nacimiento'),
+    {data: 'fechaNacimiento', title: 'Fecha nacimiento',
      render: decorateNacAprox },
-    {data: 'nombreCompletoMadre', title: TAPi18n.__('Nombre de la madre')},
-    {data: 'nombreCompletoPadreOConyuge', title: TAPi18n.__('Nombre del cónyuge')},
-    {data: 'lugarNacimiento', title: TAPi18n.__('Lugar de nacimiento')},
-    {data: 'lugarNacimientoProvinciaNombre', title: TAPi18n.__('Provincia')},
-    {data: 'lugarNacimientoMunicipioNombre', title: TAPi18n.__('Municipio')},
+    {data: 'nombreCompletoMadre', title: 'Nombre de la madre'},
+    {data: 'nombreCompletoPadreOConyuge', title: 'Nombre del cónyuge'},
+    {data: 'lugarNacimiento', title: 'Lugar de nacimiento'},
+    {data: 'lugarNacimientoProvinciaNombre', title: 'Provincia'},
+    {data: 'lugarNacimientoMunicipioNombre', title: 'Municipio'},
     // {data: 'lugarNacimientoLongitud', title: 'Geo1'},
    // {data: 'lugarNacimientoLongitud', title: 'Geo', render: renderGeo,
     // className: 'column-center' },
@@ -168,10 +168,10 @@ TabularTables.Persons = new Tabular.Table({
     {data: 'nombreTrabajadoresFuneraria', title: 'none', visible: false},
     {data: 'nombreOtrosFuncionariosOTrabajadores', title: 'none',
      visible: false},
-    {data: 'cementerioEnterrado', title: TAPi18n.__('Cementerio'), visible: false},
+    {data: 'cementerioEnterrado', title: 'Cementerio', visible: false},
     {data: 'lugarNacimientoLongitud', title: 'Geo', visible: false},
     {data: 'lugarNacimientoLatitud', title: 'Geo', visible: false},
-    {data: 'lugarNacimientoPais', title: TAPi18n.__('País'), visible: false},
+    {data: 'lugarNacimientoPais', title: 'País', visible: false},
     {data: 'familiar', title: 'Familiar', visible: false},
     {data: 'slug', title: 'slug', visible: false}
   ]
@@ -190,7 +190,7 @@ var renderPhoto = function (val) {
 
 var renderFamiliarDifu = function (val, type, doc) {
   return '<a href="/persona/' + doc.user + '" title="'
-  + TAPi18n.__('Ir a la página de este familiar') +'"><i class="fa fa-user"></i></a>';
+    + TAPi18n.__('Ir a la página de este familiar') +'"><i class="fa fa-user"></i></a>';
 };
 
 var renderBebeDifu = function (val, type, doc) {
@@ -231,14 +231,14 @@ TabularTables.AdCampagins = new Tabular.Table({
        };
      }
     },
-    {data: 'user', title: TAPi18n.__('Familiar'), render: renderFamiliarDifu, className: 'column-center'},
-    {data: 'bebe', title: TAPi18n.__('Bebe'), render: renderBebeDifu, className: 'column-center'},
-    {data: 'participate', title: TAPi18n.__('¿Quiere participar?'), render: renderCheckbox,
+    {data: 'user', title: 'Familiar', render: renderFamiliarDifu, className: 'column-center'},
+    {data: 'bebe', title: 'Bebe', render: renderBebeDifu, className: 'column-center'},
+    {data: 'participate', title: '¿Quiere participar?', render: renderCheckbox,
      className: 'column-center', visible: false },
-    {data: 'photo', title: TAPi18n.__('Foto '), render: renderPhoto, visible: false},
-    {data: 'text', title: TAPi18n.__('Texto'), visible: false},
-    {data: 'validated', title: TAPi18n.__('¿Validado?'), render: renderCheckbox, className: 'column-center'},
-    {title: TAPi18n.__('¿Validar?'),
+    {data: 'photo', title: 'Foto ', render: renderPhoto, visible: false},
+    {data: 'text', title: 'Texto', visible: false},
+    {data: 'validated', title: '¿Validado?', render: renderCheckbox, className: 'column-center'},
+    {title: '¿Validar?',
      tmpl: Meteor.isClient && Template.difuValidate, className: 'column-center',
      tmplContext: function (rowData) {
        return {
@@ -262,11 +262,11 @@ TabularTables.abuseReports = new Tabular.Table({
   language: tabLanguageEs,
   order: [[1, 'desc']],
   columns: [
-    {data: 'createdAt', title: TAPi18n.__('Fecha'), render: renderDateTime, className: 'abuse-date'},
-    {data: 'updatedAt', title: TAPi18n.__('Actualizado'), render: renderDateTime, visible: false},
-    {data: 'reported', title: TAPi18n.__('Denunciado'), render: renderReported, className: 'column-center'},
-    {data: 'reporter', title: TAPi18n.__('Denuncia'), render: renderReporter, className: 'column-center'},
-    {data: 'text', title: TAPi18n.__('Texto'), className: 'abuse-report'}
+    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date'},
+    {data: 'updatedAt', title: 'Actualizado', render: renderDateTime, visible: false},
+    {data: 'reported', title: 'Denunciado', render: renderReported, className: 'column-center'},
+    {data: 'reporter', title: 'Denuncia', render: renderReporter, className: 'column-center'},
+    {data: 'text', title: 'Texto', className: 'abuse-report'}
   ]
 });
 
@@ -279,11 +279,16 @@ TabularTables.siteSettings = new Tabular.Table({
   bPaginate: false,
   order: [[0, 'asc']],
   columns: [
-    {data: 'createdAt', title: TAPi18n.__('Fecha'), render: renderDateTime, className: 'abuse-date', visible: false},
+    {data: 'createdAt', title: 'Fecha', render: renderDateTime, className: 'abuse-date', visible: false},
     {data: '_id', title: 'ID', visible: false},
-    {data: 'name', title: TAPi18n.__('Nombre'), visible: false},
-    {data: 'description', render: renderDesc, title: TAPi18n.__('Descripción')},
-    {data: 'value', title: TAPi18n.__('Valor'), render: renderValue, className: 'site-setting-value-column'},
-    {data: 'type', title: TAPi18n.__('Tipo'), visible: false}
+    {data: 'name', title: 'Nombre', visible: false},
+    {data: 'description', render: renderDesc, title: 'Descripción'},
+    {data: 'value', title: 'Valor', render: renderValue, className: 'site-setting-value-column'},
+    {data: 'type', title: 'Tipo', visible: false}
   ]
 });
+
+// TODO
+// if(Meteor.isClient) {
+//   TabularTables.Persons.options.language = { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" };
+// }
