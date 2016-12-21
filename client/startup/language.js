@@ -12,5 +12,11 @@ Meteor.startup(function () {
         // Handle the situation
         console.log(error_message);
       });
+    accountsUIBootstrap3.setLanguage(lang);
+
+    // Más: http://www.webtutoriales.com/articulos/trabajando-con-moment-js
+    // http://momentjs.com/docs/#/customization/relative-time/
+    moment.locale(lang);
+    $.fn.datepicker.defaults.language = lang;
   });
 });
