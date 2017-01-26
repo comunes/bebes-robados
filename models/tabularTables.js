@@ -289,6 +289,7 @@ TabularTables.siteSettings = new Tabular.Table({
 });
 
 // TODO
+// https://datatables.net/reference/option/language
 // if(Meteor.isClient) {
 //   TabularTables.Persons.options.language = { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" };
 // }
