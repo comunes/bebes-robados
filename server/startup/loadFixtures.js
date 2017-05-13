@@ -17,15 +17,17 @@ var loadFixture = function (fixtures, collection) {
 };
 
 Meteor.startup(function () {
-  if (!Meteor.settings.public.isProduction) {
-    var users = YAML.eval(Assets.getText('users.yml'));
+  // Create test users in production also
+  var users = YAML.eval(Assets.getText('users.yml'));
 
-    for (var key in users) {
-      if (users.hasOwnProperty(key)) {
-        loadUser(users[key]);
-      }
+  for (var key in users) {
+    if (users.hasOwnProperty(key)) {
+      loadUser(users[key]);
     }
+  }
 
+  // but down asign fixtures to test user
+  if (!Meteor.settings.public.isProduction) {
     var testUserId = Meteor.users.findOne({username: 'test'})._id;
 
     if (testUserId !== null && Persons.find().count() === 0) {
