@@ -11,3 +11,4 @@ mup-prod.json
 .deploy-prod
 mup-local.json
 .meteor/dev_bundle
+.vscode/*
