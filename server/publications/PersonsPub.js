@@ -33,6 +33,7 @@ Meteor.publish('personAndFiles', function (id) {
   }
 });
 
+// TODO: id param can be removed
 Meteor.publish('personsOfThisUser', function (id) {
   return Persons.find({familiar: this.userId});
 });
