@@ -14,7 +14,8 @@ BrowserPolicy.content.allowOriginForAll('*.facebook.com');
 BrowserPolicy.content.allowOriginForAll('*.youtube.com');
 BrowserPolicy.content.allowOriginForAll('*.png');
 BrowserPolicy.content.allowOriginForAll('*.jpg');
-BrowserPolicy.content.allowOriginForAll('*.jpeg');
+BrowserPolicy.content.allowOriginForAll('*.ytimg.com');
+
 
 BrowserPolicy.content.allowFontDataUrl();
 

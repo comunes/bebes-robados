@@ -222,6 +222,21 @@ Schema.Persons = new SimpleSchema({
         collection: 'Photos'
       }}
   },
+  videos: {
+    type: [Object],
+    i18nLabel: 'Vídeos en redes sociales (como youtube, etc) que puedan ayudar en la búsqueda de familiares',
+    optional: true
+
+  },
+  'videos.$.url': {
+    type: String,
+    i18nLabel: 'Dirección URL',
+    optional: true,
+    autoform: { afFieldInput: {label: false,
+                               type: 'url',
+                               placeholder: function() { return TAPi18n.__('por ej. https;\/\/www.youtube.com\/watch?v=TUVIDEO');}}},
+    regEx: SimpleSchema.RegEx.Url
+  },
   attachs: {
     type: [String],
     i18nLabel: 'Documentos relacionados que quieran aportar', optional: true

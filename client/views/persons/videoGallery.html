@@ -1,0 +1,25 @@
+<template name="videosGallery">
+  <!-- -*- engine:ctemplate -*- -->
+
+  {{#if tieneVideos}}
+    <legend>{{_"Vídeos relacionados con este caso"}}</legend>
+  {{/if}}
+
+  {{#each video in ytVideos}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="embed-responsive embed-responsive-4by3">
+          <div class="embed-responsive-item" id="videoplayer{{video}}"></div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  {{#each video in otherVideos}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a href={{video}} target="_blank">{{video}}</a>
+      </div>
+    </div>
+  {{/each}}
+</template>

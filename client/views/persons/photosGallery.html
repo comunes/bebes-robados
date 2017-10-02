@@ -1,6 +1,14 @@
 <template name="photosGallery">
   <!-- -*- engine:ctemplate -*- -->
 
+  {{#if tieneFotos}}
+    {{#if buscasBebe}}
+      <legend>{{_"Fotos relacionadas con este caso"}}</legend>
+    {{else}}
+      <legend>{{_"Fotos de esta persona"}}</legend>
+    {{/if}}
+  {{/if}}
+
   <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
   <div id="blueimp-gallery" class="blueimp-gallery">
     <!-- The container for the modal slides -->

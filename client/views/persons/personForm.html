@@ -65,6 +65,12 @@
             {{> afQuickField name='nombreCompleto' placeholder="Nombre y apellidos" id="nombreCompleto" }}
             {{> afQuickField name="sexo" options="allowed" firstOption="» Selecciona uno" id="sexo" }}
 
+
+            <legend>{{_"Familiares"}}</legend>
+
+            {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
+            {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
+
             <div class="form-inline">
               {{> afQuickField name="fechaNacimiento"}}
               {{> afQuickField name="fechaNacimientoEsAprox" defaultValue=false}}
@@ -89,26 +95,17 @@
             </div>
 
             {{#if isEqual type "disabled"}}
-              {{#if buscasBebe}}
-                <legend>{{_"Fotos relacionadas con este caso"}}</legend>
-              {{else}}
-                <legend>{{_"Fotos de esta persona"}}</legend>
-              {{/if}}
-              <div class="row">
-                {{> photosGallery collection="Photos" photos=doc.photos}}
-              </div>
+              {{> photosGallery collection="Photos" photos=doc.photos buscasBebe=buscasBebe}}
+              {{> videosGallery videos=doc.videos}}
             {{else}}
               <div class="form-inline form-photos">
                 <legend>{{_"Fotos tuyas o de otros familiares que puedan ayudar al reencuentro"}}</legend>
                 {{> afQuickField name="photos" collection="Photos" label=false type="multiFileUpload"}}
               </div>
+              <div class="row">
+                {{> afQuickField name="videos" placeholder="Vídeos" }}
+              </div>
             {{/if}}
-
-            <legend>{{_"Familiares"}}</legend>
-
-            {{> afQuickField name="nombreCompletoMadre" placeholder="Nombre y apellidos" }}
-            {{> afQuickField name="nombreCompletoPadreOConyuge" placeholder="Nombre y apellidos" }}
-
           </div>
 
           <div role="tabpanel" class="tab-pane" id="fallecimiento">
