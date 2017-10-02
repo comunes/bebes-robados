@@ -86,7 +86,7 @@ Accounts.emailTemplates.verifyEmail.text = function (user, url) {
 
 Meteor.methods({
   resendVerificationEmail: function () {
-    check(Meteor.userId(), String);
-    Accounts.sendVerificationEmail(Meteor.userId());
+    check(this.userId, String);
+    Accounts.sendVerificationEmail(this.userId);
   }
 });
