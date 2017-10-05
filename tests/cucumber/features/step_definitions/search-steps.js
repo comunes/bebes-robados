@@ -46,7 +46,8 @@ module.exports = function () {
     search = searchs[i][0];
     client.url(process.env.ROOT_URL + (lugar === 'home' ? '' : '/bebes'));
     var selector = lugar === 'home' ? 'input[id="home-main-search"]': '#personsTable_filter > label > input';
-    var navSelector = '#fp-nav > ul > li:nth-child(3) > a > span';
+    var navSelector = '#personsTable_filter > label > input';
+
     client.waitUntil(function () {
       return client.isVisible('.loading-message') == false;
     }, 5000);
@@ -56,7 +57,11 @@ module.exports = function () {
     client.setValue(selector, search);
     // http://webdriver.io/api/protocol/keys.html
     // https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/element/:id/value
+    // Deprecated in the future:
     client.keys("\uE007");
+
+    // https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_ENTER
+    // client.pressKeyCode(66); ??
   };
 
   this.Given(/^obtengo una lista de bebes en esos lugares$/, function (callback) {

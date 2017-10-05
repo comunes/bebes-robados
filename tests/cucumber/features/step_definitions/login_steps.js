@@ -166,7 +166,7 @@ module.exports = function () {
     client.waitForVisible('.UserUpdate');
     client.waitForExist('input[name="profile.dni"]');
     client.setValue('input[name="profile.dni"]', "70133390L");
-    client.waitForVisible('.btn-form-submit');
+    client.waitForVisible('.btn-form-submit', 5000);
     client.click(".btn-form-submit");
     callback();
   });
