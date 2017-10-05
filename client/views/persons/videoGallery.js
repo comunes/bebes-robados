@@ -1,23 +1,11 @@
-/* global Template _ aFilesCollection onYouTubeIframeAPIReady YT ReactiveVar */
+/* global Template _ aFilesCollection onYouTubeIframeAPIReady YT ReactiveVar require */
 
-function extractVideoID(url){
-  // https://ctrlq.org/code/19797-regex-youtube-id
-  // better
-  // https://github.com/radiovisual/get-video-id
-
-  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-  var match = url.match(regExp);
-  if (match && match[7].length == 11){
-    return match[7];
-  } else {
-    console.log("Could not extract video ID from " + url);
-    return "";
-  }
-};
+var embed = require("embed-video");
 
 // https://stackoverflow.com/questions/22795887/how-to-access-template-instance-from-helpers-in-meteor-0-8-0-blaze
 Template.videosGallery.onCreated(function() {
   this.ytVideos = new ReactiveVar([]);
+  this.vimeoVideos = new ReactiveVar([]);
   this.otherVideos = new ReactiveVar([]);
 });
 
@@ -28,50 +16,44 @@ Template.videosGallery.helpers({
   ytVideos: function () {
     return Template.instance().ytVideos.get();
   },
+  vimeoVideos: function () {
+    return Template.instance().vimeoVideos.get();
+  },
   otherVideos: function() {
     return Template.instance().otherVideos.get();
+  },
+  embedYoutube: function(id) {
+    return embed.youtube(id);
+  },
+  embedVimeo: function(id) {
+    return embed.vimeo(id);
   }
 });
 
 Template.videosGallery.onRendered(function () {
   var ytVideosSet = new Set();
+  var vimeoVideosSet = new Set();
   var otherVideosSet = new Set();
 
   for(var i = 0; i < this.data.videos.length; i++) {
+
     var url= this.data.videos[i].url;
-    var id = extractVideoID(url);
-    if (id != "") {
+    var embedCode = embed.videoSource(url);
+
+    var id = embedCode.id;
+
+    if (id != "" && embedCode.source == "youtube") {
       ytVideosSet.add(id);
     } else {
-      otherVideosSet.add(url);
+      if (id != "" && embedCode.source == "vimeo") {
+        vimeoVideosSet.add(id);
+      } else {
+        otherVideosSet.add(url);
+      }
     }
   }
-  var ytVideos = Array.from(ytVideosSet);
-  this.ytVideos.set(ytVideos);
+
+  this.ytVideos.set(Array.from(ytVideosSet));
+  this.vimeoVideos.set(Array.from(vimeoVideosSet));
   this.otherVideos.set(Array.from(otherVideosSet));
-
-  // Maybe use something more generic: https://www.npmjs.com/package/embed-video
-  onYouTubeIframeAPIReady = function () {
-    for(var i = 0; i < ytVideos.length; i++) {
-      // New Video Player, the first argument is the id of the div.
-      // Make sure it's a global variable.
-      var id = ytVideos[i];
-      console.log(id);
-      var player = new YT.Player("videoplayer" + id, {
-        height: "400",
-        width: "600",
-        videoId: id,
-        // Events like ready, state change,
-        events: {
-          onReady: function (event) {
-            // Play video when player ready.
-            // event.target.playVideo();
-          }
-        }
-
-      });
-    };
-  };
-
-  YT.load();
 });

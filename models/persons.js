@@ -226,7 +226,7 @@ Schema.Persons = new SimpleSchema({
   },
   videos: {
     type: [Object],
-    i18nLabel: 'Vídeos en redes sociales (como youtube, etc) que puedan ayudar en la búsqueda de familiares',
+    i18nLabel: 'Vídeos en redes sociales (como youtube, vimeo, etc) que puedan ayudar en la búsqueda de familiares',
     optional: true
 
   },

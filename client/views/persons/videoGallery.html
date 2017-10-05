@@ -9,7 +9,21 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="embed-responsive embed-responsive-4by3">
-          <div class="embed-responsive-item" id="videoplayer{{video}}"></div>
+          <div class="embed-responsive-item">
+            {{{embedYoutube video}}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  {{#each video in vimeoVideos}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="embed-responsive embed-responsive-4by3">
+          <div class="embed-responsive-item">
+            {{{embedVimeo video}}}
+          </div>
         </div>
       </div>
     </div>
