@@ -1,5 +1,5 @@
 # language: es
-
+@watch
 Característica: Búsqueda de bebes desde el inicio y desde la página de búsqueda
 
   @ignore

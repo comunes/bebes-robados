@@ -47,14 +47,17 @@ module.exports = function () {
     client.url(process.env.ROOT_URL + (lugar === 'home' ? '' : '/bebes'));
     var selector = lugar === 'home' ? 'input[id="home-main-search"]': '#personsTable_filter > label > input';
     var navSelector = '#fp-nav > ul > li:nth-child(3) > a > span';
-    client.waitForVisible(navSelector);
+    client.waitUntil(function () {
+      return client.isVisible('.loading-message') == false;
+    }, 5000);
+    client.waitForVisible(navSelector, 5000);
     client.click(navSelector);
     client.waitForVisible(selector);
     client.setValue(selector, search);
     // http://webdriver.io/api/protocol/keys.html
     // https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/element/:id/value
     client.keys("\uE007");
-  }
+  };
 
   this.Given(/^obtengo una lista de bebes en esos lugares$/, function (callback) {
     for (var i = 0; i < searchs.length; i++){

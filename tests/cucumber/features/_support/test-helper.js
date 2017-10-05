@@ -25,10 +25,17 @@ export const randomEmail = function () {
   return randomUsername() + '@example.com';
 };
 
+
 export const goHome = function (client) {
   client.url(process.env.ROOT_URL);
   client.waitForVisible('.Home');
   expect(client.isVisible('.Home')).toBe(true);
+  client.waitUntil(function () {
+    return client.isVisible('.pg-loading-center-middle') == false;
+  }, 5000);
+  client.waitUntil(function () {
+    return client.isVisible('.pg-loading-center-middle') == false;
+  }, 5000);
   // Close alert
   if (client.isVisible('.bert-content')) {
     client.click('.bert-content');
