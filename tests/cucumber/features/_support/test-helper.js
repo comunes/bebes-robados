@@ -13,19 +13,19 @@ function makeid(size)
     return text;
 }
 
-randomUsername = function () {
+export const randomUsername = function () {
   return makeid(7);
 };
 
-randomPassword = function () {
+export const randomPassword = function () {
   return randomUsername();
 };
 
-randomEmail = function () {
+export const randomEmail = function () {
   return randomUsername() + '@example.com';
 };
 
-goHome = function (client) {
+export const goHome = function (client) {
   client.url(process.env.ROOT_URL);
   client.waitForVisible('.Home');
   expect(client.isVisible('.Home')).toBe(true);
@@ -40,6 +40,6 @@ goHome = function (client) {
 
 // PHANTOMJS=1 chimp --watch --ddp=http://localhost:3000  --browser=phantomjs # to avoid some phantomjs specific tests that
 // do not fails in chrome/firefox
-phantomJs = process.env.PHANTOMJS;
+export const phantomJs = process.env.PHANTOMJS;
 
-appName = 'REUNE: Citizen Search Network for Stolen Babies';
+export const appName = 'REUNE: Citizen Search Network for Stolen Babies';

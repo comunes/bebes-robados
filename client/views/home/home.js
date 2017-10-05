@@ -1,5 +1,8 @@
-/* global Template $ Session Router GoogleMaps google noUndef Persons isNew onSliderRender
+
+/* global Template $ Session Router GoogleMaps google Persons isNew onSliderRender
  renderSexoAlt renderDate renderAprox renderNuevo calcShowAll isValidLatLng _ siteSettings */
+
+import {noUndef} from '/lib/functions.js';
 
 Template.home.helpers({
   homeSlogan1: function () {

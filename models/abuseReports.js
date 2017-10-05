@@ -1,5 +1,7 @@
 /* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles defaultCreatedAt defaultUpdateAt */
 
+import {defaultCreatedAt, defaultUpdateAt} from '/lib/functions.js';
+
 abuseReports = new Mongo.Collection('abuseReports');
 
 Schema = {};

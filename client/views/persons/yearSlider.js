@@ -4,6 +4,9 @@
   //             ', max: ' + Session.get('maxBornYear'));
 // });
 
+import {initYear, lastYear } from '/lib/functions.js';
+
+
 Session.setDefault('minBornYear', initYear);
 Session.setDefault('maxBornYear', lastYear);
 

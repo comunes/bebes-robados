@@ -2,6 +2,9 @@
 module.exports = function () {
   var bebes;
 
+  var helper = require('../_support/test-helper.js');
+  var appName = helper.appName;
+
   var alta = function (callback, shouldFail) {
     // TODO login
     if (bebes.lenght <= 0) {

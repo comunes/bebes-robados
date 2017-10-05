@@ -1,4 +1,5 @@
-/* global Template Persons noUndef */
+/* global Template Persons */
+
 Template.casosReportados.helpers({
   tieneBebes: function () {
     return Persons.find({ familiar: this.user._id }).count() > 0;

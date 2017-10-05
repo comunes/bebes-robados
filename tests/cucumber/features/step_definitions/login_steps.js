@@ -1,5 +1,12 @@
 module.exports = function () {
-  require("../_support/test-helper.js");
+  'use strict';
+
+  var helper = require('../_support/test-helper.js');
+  var goHome = helper.goHome;
+  var appName = helper.appName;
+  var randomUsername = helper.randomUsername;
+  var randomEmail = helper.randomEmail;
+  var randomPassord = helper.randomPassword;
 
   var username;
   var email;

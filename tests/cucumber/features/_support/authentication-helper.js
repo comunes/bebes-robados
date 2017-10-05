@@ -1,6 +1,8 @@
 /* global client, Meteor, module Accounts expect require */
 
 module.exports = function () {
+  'use strict';
+
   require('../_support/test-helper.js');
 
   this.Before(function () {

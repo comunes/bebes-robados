@@ -25,3 +25,4 @@ BrowserPolicy.content.allowEval();
 
 // https://stackoverflow.com/questions/32600469/meteor-browser-policy-local-camera-not-allowed
 BrowserPolicy.content.allowOriginForAll('blob:');
+// It works if we use http://localhost:3000 instead of http:/127.0.0.1:3000
