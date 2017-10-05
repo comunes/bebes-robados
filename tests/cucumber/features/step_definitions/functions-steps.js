@@ -1,4 +1,5 @@
-/*global module, require, expect, isValidLatLng */
+/*global module require expect isValidLatLng undef noUndef */
+
 module.exports = function () {
   var vnum;
   var u;

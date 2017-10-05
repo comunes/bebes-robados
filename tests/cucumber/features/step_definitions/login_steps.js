@@ -1,3 +1,4 @@
+/* global module expect require client process */
 module.exports = function () {
   'use strict';
 
@@ -6,7 +7,7 @@ module.exports = function () {
   var appName = helper.appName;
   var randomUsername = helper.randomUsername;
   var randomEmail = helper.randomEmail;
-  var randomPassord = helper.randomPassword;
+  var randomPassword = helper.randomPassword;
 
   var username;
   var email;

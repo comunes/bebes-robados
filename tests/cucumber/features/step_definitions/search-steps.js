@@ -1,7 +1,14 @@
-/*global module, expect, client */
+/*global module expect client require process */
 module.exports = function () {
 
+  'use strict';
+
+  var helper = require('../_support/test-helper.js');
+  var goHome = helper.goHome;
+  var appName = helper.appName;
+
   var searchs;
+  var search;
   var lugar;
 
   this.Given(/^que estoy en el inicio$/, function (callback) {

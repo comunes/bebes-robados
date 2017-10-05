@@ -1,3 +1,5 @@
+/* global process module client */
+
 module.exports = function () {
 
   var urls;
