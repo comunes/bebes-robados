@@ -1,12 +1,11 @@
-/* global Schema, SimpleSchema, Meteor, $, defaultCreatedAt, Roles
-   defaultUpdateAt, addApiRoute nifValido TAPi18n */
+/* global Schema, SimpleSchema, Meteor, $, Roles, addApiRoute TAPi18n */
 // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
 
 /*
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
  */
 
-import {defaultCreatedAt, defaultUpdateAt} from '/lib/functions.js';
+import {defaultCreatedAt, defaultUpdateAt, nifValido} from '/lib/functions.js';
 
 SimpleSchema.messages({dniInvalido: 'DNI invalido'});
 

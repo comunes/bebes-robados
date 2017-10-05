@@ -1,5 +1,7 @@
 /* global siteSettings:true, Mongo, SimpleSchema, Roles siteSettingsTypes Meteor Session
- defaultCreatedAt Session */
+ Session */
+
+import {defaultCreatedAt} from '/lib/functions.js';
 
 siteSettings = new Mongo.Collection('siteSettings');
 

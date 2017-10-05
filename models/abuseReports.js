@@ -1,4 +1,4 @@
-/* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles defaultCreatedAt defaultUpdateAt */
+/* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles TAPi18n */
 
 import {defaultCreatedAt, defaultUpdateAt} from '/lib/functions.js';
 

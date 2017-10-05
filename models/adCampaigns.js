@@ -1,5 +1,7 @@
 /* global AdCampaigns:true, Mongo, Schema:true, SimpleSchema, currentAdCampaign, Roles _ */
 
+import {currentAdCampaign} from '/lib/functions.js';
+
 AdCampaigns = new Mongo.Collection('AdCampaigns');
 
 Schema.AdCampaign = new SimpleSchema({

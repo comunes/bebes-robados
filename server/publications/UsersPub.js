@@ -1,4 +1,4 @@
-/* global Meteor, currentAdCampaign, AdCampaigns, check, Persons */
+/* global Meteor, AdCampaigns, check, Persons */
  // https://stackoverflow.com/questions/13151879/publish-certain-information-for-meteor-users-and-more-information-for-meteor-use
 // https://stackoverflow.com/questions/14802627/cannot-access-other-users-email-addresses-in-meteor-app
 

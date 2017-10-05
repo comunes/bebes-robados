@@ -1,9 +1,11 @@
 /* global TabularTables:true,moment, tabLanguageEs:true,renderDate:true,
- isValidLatLng,renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
- decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, isNew, $, Persons, AdCampaigns
+ renderSexo:true, renderSexoAlt:true, renderGeo:true,renderAprox:true,
+ decorateNacAprox:true,setEmptyTable:true, renderNuevo:true,renderFamiliar:true, Tabular, $, Persons, AdCampaigns
  renderCheckbox:true Meteor Template abuseReports Roles siteSettings TAPi18n */
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
+
+import {isNew, isValidLatLng} from '/lib/functions.js';
 
 TabularTables = {};
 
