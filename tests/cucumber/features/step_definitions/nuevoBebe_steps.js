@@ -1,7 +1,8 @@
-/*global module, expect, client appName */
+/*global module expect client appName require process */
 module.exports = function () {
-  var bebes;
+  'use strict';
 
+  var bebes;
   var helper = require('../_support/test-helper.js');
   var appName = helper.appName;
 

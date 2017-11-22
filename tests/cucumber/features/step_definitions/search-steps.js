@@ -1,7 +1,14 @@
-/*global module, expect, client */
+/*global module expect client require process */
 module.exports = function () {
 
+  'use strict';
+
+  var helper = require('../_support/test-helper.js');
+  var goHome = helper.goHome;
+  var appName = helper.appName;
+
   var searchs;
+  var search;
   var lugar;
 
   this.Given(/^que estoy en el inicio$/, function (callback) {
@@ -39,15 +46,23 @@ module.exports = function () {
     search = searchs[i][0];
     client.url(process.env.ROOT_URL + (lugar === 'home' ? '' : '/bebes'));
     var selector = lugar === 'home' ? 'input[id="home-main-search"]': '#personsTable_filter > label > input';
-    var navSelector = '#fp-nav > ul > li:nth-child(3) > a > span';
-    client.waitForVisible(navSelector);
+    var navSelector = '#personsTable_filter > label > input';
+
+    client.waitUntil(function () {
+      return client.isVisible('.loading-message') == false;
+    }, 5000);
+    client.waitForVisible(navSelector, 5000);
     client.click(navSelector);
     client.waitForVisible(selector);
     client.setValue(selector, search);
     // http://webdriver.io/api/protocol/keys.html
     // https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/element/:id/value
+    // Deprecated in the future:
     client.keys("\uE007");
-  }
+
+    // https://developer.android.com/reference/android/view/KeyEvent.html#KEYCODE_ENTER
+    // client.pressKeyCode(66); ??
+  };
 
   this.Given(/^obtengo una lista de bebes en esos lugares$/, function (callback) {
     for (var i = 0; i < searchs.length; i++){

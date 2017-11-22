@@ -1,3 +1,4 @@
+/* global module expect require client process */
 module.exports = function () {
   'use strict';
 
@@ -6,24 +7,40 @@ module.exports = function () {
   var appName = helper.appName;
   var randomUsername = helper.randomUsername;
   var randomEmail = helper.randomEmail;
-  var randomPassord = helper.randomPassword;
+  var randomPassword = helper.randomPassword;
 
   var username;
   var email;
   var passwd;
   var dni;
 
+  // https://gist.github.com/THuRStoN/9468324
+  function formatNumberLength(num, length) {
+    var r = "" + num;
+    while ( r.length < length ) {
+      r = "0" + r;
+    }
+    return r;
+  }
+
+  function charDNI(dni) {
+    var chain = "TRWAGMYFPDXBNJZSQVHLCKET";
+    var pos = dni % 23;
+    var letter = chain.substring( pos, pos + 1 );
+    return letter;
+  }
+
+  function rand_dni() {
+    var num = Math.floor( ( Math.random() * 100000000 ) );
+    var sNum = formatNumberLength( num, 8 );
+    return sNum + charDNI( sNum );
+  }
+
   var generateUserData = function () {
-    // https://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
     username = randomUsername();
     email = randomEmail();
     passwd = randomPassword();
-    // http://stackoverflow.com/questions/21816595/generate-a-random-number-of-fixed-length-using-javascript
-    var dninumero = Math.floor(10000000 + Math.random() * 90000000);
-    var numero = dninumero % 23;
-    var letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
-    letra = letra.substring(numero, numero + 1);
-    dni = dninumero + letra;
+    dni = rand_dni();
   };
 
   var createAccountAndLogin = function (callback, auth) {
@@ -68,6 +85,7 @@ module.exports = function () {
     expect(client.getTitle()).toBe(appName);
     callback();
   });
+
 
   this.Given(/^I am on the home page$/, function (callback) {
     goHome(client);
@@ -148,7 +166,7 @@ module.exports = function () {
     client.waitForVisible('.UserUpdate');
     client.waitForExist('input[name="profile.dni"]');
     client.setValue('input[name="profile.dni"]', "70133390L");
-    client.waitForVisible('.btn-form-submit');
+    client.waitForVisible('.btn-form-submit', 5000);
     client.click(".btn-form-submit");
     callback();
   });

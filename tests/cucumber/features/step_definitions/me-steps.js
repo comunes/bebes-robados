@@ -1,5 +1,11 @@
-/* globals module */
+/* global module client expect process  */
 module.exports = function () {
+  'use strict';
+
+  var helper = require('../_support/test-helper.js');
+  var randomUsername = helper.randomUsername;
+  var phantomJs = helper.phantonJs;
+
   var datos;
 
   this.Given(/^unos datos personales$/, function (table, callback) {
