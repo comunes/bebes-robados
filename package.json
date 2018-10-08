@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "chimp": "^0.51.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.0.0"
   }
 }
