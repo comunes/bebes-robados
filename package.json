@@ -15,5 +15,8 @@
     "meteor-node-stubs": "^0.2.3",
     "node-pre-gyp": "https://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.6.32.tgz",
     "webshot": "^0.18.0"
+  },
+  "devDependencies": {
+    "chimp": "^0.51.1"
   }
 }
