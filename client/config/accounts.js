@@ -1,6 +1,6 @@
 /* global Accounts accountsUIBootstrap3 Router TAPi18n */
 
-import {nifValido} from '/lib/functions.js';
+import {nifValido} from '/imports/lib/functions.js';
 
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_AND_EMAIL',

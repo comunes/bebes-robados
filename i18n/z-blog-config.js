@@ -1,3 +1,4 @@
+/*
 Meteor.startup(function () {
   Blog.config({
     adminRole: 'adminRole',
@@ -44,3 +45,4 @@ Meteor.startup(function () {
     }
   });
 });
+*/

@@ -1,5 +1,7 @@
 /* global Meteor Bert GoogleMaps $ moment */
 
+import '/imports/lib/mainRoutes.js';
+
 Meteor.startup(function () {
   // https://eternicode.github.io/bootstrap-datepicker/
   $.fn.datepicker.defaults.format = {

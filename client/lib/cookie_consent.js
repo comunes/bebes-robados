@@ -14,3 +14,4 @@ var options = {
 };
 
 CookieConsent.init(options);
+

@@ -1,6 +1,6 @@
 /* global Meteor, AdCampaigns */
 
-import {currentAdCampaign} from '/lib/functions.js';
+import {currentAdCampaign} from '/imports/lib/functions.js';
 
 Meteor.publish('AdCampaigns', function () {
   return AdCampaigns.find();

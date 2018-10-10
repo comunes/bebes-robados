@@ -1,4 +1,7 @@
-/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ */
+/* global SubsManager, undef, Roles, Persons, SubsManager, Session, webPages, $ */
+
+import { Router } from 'meteor/iron:router';
+import { Meteor } from 'meteor/meteor';
 
 // https://iron-meteor.github.io/iron-router/
 

@@ -64,11 +64,9 @@ jazeee:spiderable-longer-timeout
 todda00:collection-revisions
 mrt:accounts-admin-ui-bootstrap-3
 alanning:roles
-ryw:blog
 service-configuration@1.0.11
 accounts-base@1.4.3
 francocatena:status
-snaiperskaya96:app-dump-fork
 markdown@1.0.11
 aldeed:delete-button
 hinas:meteor-bootstrap-confirmation
@@ -87,7 +85,7 @@ mrt:filesize
 lawshe:full-page
 modules@0.13.0
 softwarerero:accounts-t9n
-ecmascript@0.12.0
+ecmascript
 khrone:img-qrcode
 deepwell:raven
 davidsichau:piwik
@@ -96,3 +94,7 @@ tap:i18n-ui
 gildaspk:simpleschema-tapi18n-labels
 mixmax:smart-disconnect
 dynamic-import
+aldeed:collection2-core
+aldeed:schema-deny
+aldeed:schema-index
+socialize:server-time

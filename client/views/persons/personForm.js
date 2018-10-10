@@ -1,7 +1,7 @@
 /* global GoogleMaps,google,geocode:true,provincia,municipio,Template, alertMessage, success, Roles
  resetMarker:true, Meteor, Router, $ ReactiveVar AutoForm renderProvincias _ AutoForm TAPi18n */
 
-import {noUndef} from '/lib/functions.js';
+import {noUndef} from '/imports/lib/functions.js';
 
 var toDelete = new ReactiveVar();
 

@@ -1,5 +1,7 @@
 /* global Template Meteor success alertMessage $ Session Tracker Router SEO _ TAPi18n document */
 
+import '/imports/startup/common/constants.js';
+
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle (array) {
   var currentIndex = array.length;

@@ -2,7 +2,7 @@
 /* global Template $ Session Router GoogleMaps google Persons onSliderRender
  renderSexoAlt renderDate renderAprox renderNuevo calcShowAll _ siteSettings */
 
-import {noUndef, isNew, isValidLatLng} from '/lib/functions.js';
+import {noUndef, isNew, isValidLatLng} from '/imports/lib/functions.js';
 
 Template.home.helpers({
   homeSlogan1: function () {

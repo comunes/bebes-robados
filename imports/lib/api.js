@@ -3,7 +3,7 @@
 // http://meteorpedia.com/read/REST_API
 // https://github.com/awatson1978/rest-api/blob/master/webapp/lib/rest/api.posts.js
 
-addApiRoute = function (path, collection, onlyFields, param, fetchMany) {
+export const addApiRoute = function (path, collection, onlyFields, param, fetchMany) {
   if (!onlyFields) {
     onlyFields = {};
   }

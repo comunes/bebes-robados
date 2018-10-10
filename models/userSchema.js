@@ -5,7 +5,8 @@
 var phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
  */
 
-import {defaultCreatedAt, defaultUpdateAt, nifValido} from '/lib/functions.js';
+import {defaultCreatedAt, defaultUpdateAt, nifValido} from '/imports/lib/functions.js';
+import {addApiRoute} from '/imports/lib/api.js';
 
 SimpleSchema.messages({dniInvalido: 'DNI invalido'});
 

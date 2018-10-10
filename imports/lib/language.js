@@ -1,6 +1,6 @@
-/* global navigator getUserLanguage:true Meteor */
+/* global navigator Meteor */
 
-getUserLanguage = function () {
+export const getUserLanguage = function () {
   // Put here the logic for determining the user language
   // https://themeteorchef.com/snippets/i18n-and-meteor/#tmc-language-switching
 

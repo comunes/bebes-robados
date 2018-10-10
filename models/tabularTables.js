@@ -5,7 +5,7 @@
 // https://github.com/aldeed/meteor-tabular
 // Comparison: http://reactive-table.meteor.com/
 
-import {isNew, isValidLatLng} from '/lib/functions.js';
+import {isNew, isValidLatLng} from '/imports/lib/functions.js';
 
 TabularTables = {};
 

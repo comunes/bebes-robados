@@ -1,7 +1,8 @@
 /* global Persons:true, Schema:true, Mongo, Meteor, Template, SimpleSchema,
  addApiRoute _ onAfterUp:true Roles CollectionRevisions alertMessage TAPi18n */
 
-import {defaultCreatedAt, defaultUpdateAt} from '/lib/functions.js';
+import {defaultCreatedAt, defaultUpdateAt} from '/imports/lib/functions.js';
+import {addApiRoute} from '/imports/lib/api.js';
 
 onAfterUp = function () {
   return function (err) {

@@ -1,0 +1,13 @@
+{
+    "public": {
+        "isProduction": false,
+        "ravenClientDSN": "",
+        "owa": {
+            "owaUrl": "",
+            "owaSiteId": ""
+        }
+    },
+    "private" : {
+        "ravenServerDSN": ""
+    }
+}

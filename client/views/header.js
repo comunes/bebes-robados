@@ -1,6 +1,6 @@
 /* global Template Router $ siteSettings Dispatcher TAPi18n Meteor */
 
-import {undef} from '/lib/functions.js';
+import {undef} from '/imports/lib/functions.js';
 
 Template.header.helpers({
   siteName: function () {

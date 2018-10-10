@@ -1,6 +1,6 @@
 /* global Template thisYear Dispatcher */
 
-import {thisYear} from '/lib/functions.js';
+import {thisYear} from '/imports/lib/functions.js';
 
 Template.homeFooter.helpers({
   thisYear: function () {

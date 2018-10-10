@@ -1,4 +1,7 @@
 /* global Schema, SimpleSchema, Mongo, Provincias:true, provinciaFind:true, addApiRoute, Roles  */
+
+import {addApiRoute} from '/imports/lib/api.js';
+
 Schema.Provincias = new SimpleSchema({
   code: { type: Number, optional: false, index: 1 },
   name: { type: String, optional: false }

@@ -1,6 +1,6 @@
 /* global abuseReports:true, Mongo, Schema:true, SimpleSchema, Roles TAPi18n */
 
-import {defaultCreatedAt, defaultUpdateAt} from '/lib/functions.js';
+import {defaultCreatedAt, defaultUpdateAt} from '/imports/lib/functions.js';
 
 abuseReports = new Mongo.Collection('abuseReports');
 

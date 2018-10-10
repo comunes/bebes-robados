@@ -1,4 +1,7 @@
 /* global Schema, SimpleSchema, Mongo, Municipios:true, municipioFind:true, addApiRoute */
+
+import {addApiRoute} from '/imports/lib/api.js';
+
 Schema.Municipios = new SimpleSchema({
   cod_id: { type: Number, optional: false, index: 1 },
   cod_prov: { type: Number, optional: false, index: 1 },

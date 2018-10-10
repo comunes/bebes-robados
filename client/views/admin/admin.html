@@ -18,9 +18,6 @@
     <div role="tabpanel" class="tab-pane fade in active" id="settings">
       {{> siteSettingsAdmin }}
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="blog">
-      {{> blogAdmin }}
-    </div>
     <div role="tabpanel" class="tab-pane fade" id="difusion">
       {{> difuAdmin }}
     </div>
@@ -35,18 +32,6 @@
       <br>
 
       {{> accountsAdminCustom }}
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="backups">
-      <br>
-      <br>
-      Ahora mismo esta aplicación está formada por:
-      <ul>
-        <li><a href="https://github.com/comunes/bebes-robados" target="_blank">El software</a>: que puede ser instalado en cualquier otro sitio</li>
-        <li>Los datos: que se pueden descargar (y restaurar) desde aquí en casos de necesidad</li>
-        <li>Las imágenes: por ahora no disponemos de una forma pública de hacer backups (y por el volumen, es probable que no sea trivial de hacer)</li>
-      </ul>
-      <br>
-      {{> appDumpUI }}
     </div>
 
   </div>

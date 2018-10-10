@@ -1,4 +1,7 @@
 /* global Meteor Session TAPi18n getUserLanguage console Tracker */
+
+import { getUserLanguage } from '/imports/lib/language';
+
 Meteor.startup(function () {
   Tracker.autorun(function () {
     var lang = getUserLanguage();
