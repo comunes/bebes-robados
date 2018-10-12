@@ -1,4 +1,4 @@
-municipes = [{
+export default municipes = [{
 	"cod_prov": "01",
 	"cod_mun": "001",
 	"id": 0,

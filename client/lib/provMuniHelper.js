@@ -1,3 +1,6 @@
+import provinces from '/imports/lib/provincias/provinciasJson.js'
+import municipes from '/imports/lib/provincias/municipiosJson.js'
+
 municipio = function (cod_id) {
   var name;
   $.each(municipes, function(number, municipe) {

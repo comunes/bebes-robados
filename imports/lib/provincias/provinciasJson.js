@@ -1,4 +1,4 @@
-provinces = [{
+export default provinces = [{
     "code": "15",
     "name": "A Coruña"
   },
