@@ -34,13 +34,14 @@ Template.videosGallery.onRendered(function () {
   var ytVideosSet = new Set();
   var vimeoVideosSet = new Set();
   var otherVideosSet = new Set();
+  const length = this.data.videos && this.data.videos.length ? this.data.videos.length: 0;
 
-  for(var i = 0; i < this.data.videos.length; i++) {
+  for(var i = 0; i < length; i++) {
 
     var url= this.data.videos[i].url;
     var embedCode = embed.videoSource(url);
 
-    var id = embedCode.id;
+    var id = embedCode && embedCode.id ? embedCode.id: "";
 
     if (id != "" && embedCode.source == "youtube") {
       ytVideosSet.add(id);
