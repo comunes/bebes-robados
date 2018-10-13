@@ -1,11 +1,11 @@
-/* global SubsManager, undef, Roles, Persons, SubsManager, Session, webPages, $ */
-
-import { Router } from 'meteor/iron:router';
-import { Meteor } from 'meteor/meteor';
+/* global SubsManager, undef, Roles, Meteor, Persons, Router, SubsManager, Session, webPages, $ */
 
 // https://iron-meteor.github.io/iron-router/
 
 // https://github.com/kadirahq/subs-manager
+
+import {undef} from '/imports/lib/functions.js';
+
 var subsManager = new SubsManager();
 
 var subWebPage = function () {
