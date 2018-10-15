@@ -16,6 +16,7 @@ BrowserPolicy.content.allowOriginForAll('*.png');
 BrowserPolicy.content.allowOriginForAll('*.jpg');
 BrowserPolicy.content.allowOriginForAll('*.ytimg.com');
 BrowserPolicy.content.allowOriginForAll('*.vimeo.com');
+BrowserPolicy.content.allowOriginForAll('localhost:3000');
 
 
 BrowserPolicy.content.allowFontDataUrl();
