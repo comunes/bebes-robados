@@ -1,4 +1,5 @@
 /* global Meteor Session TAPi18n getUserLanguage console Tracker */
+import T9n from "meteor-accounts-t9n";
 
 import { getUserLanguage } from '/imports/lib/language';
 
@@ -7,6 +8,7 @@ Meteor.startup(function () {
     var lang = getUserLanguage();
     Session.set("showLoadingIndicator", true);
     console.log("Language: " + lang);
+    T9n.setLanguage(lang);
     TAPi18n.setLanguage(lang)
       .done(function () {
         Session.set("showLoadingIndicator", false);

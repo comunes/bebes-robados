@@ -6,3 +6,6 @@ import "/imports/lib/api.js";
 import "/imports/lib/comments-config.js";
 import "/imports/lib/editableConfig.js";
 import "/imports/lib/language.js";
+import "./default.js";
+import "./language.js";
+import "./piwik.js";

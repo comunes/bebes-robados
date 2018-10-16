@@ -31,6 +31,7 @@ check@1.3.1
 aldeed:autoform
 tap:i18n
 ian:accounts-ui-bootstrap-3
+# artemi:autoform-map > autoform 6
 yogiben:autoform-map
 dburles:google-maps
 twbs:bootstrap
@@ -71,7 +72,7 @@ markdown@1.0.11
 aldeed:delete-button
 hinas:meteor-bootstrap-confirmation
 babrahams:editable-text-wysiwyg-bootstrap-3
-babrahams:transactions
+#babrahams:transactions
 themeteorchef:bert
 vazco:universe-html-purifier
 percolate:migrations
@@ -84,7 +85,7 @@ ostrio:templatehelpers
 mrt:filesize
 lawshe:full-page
 modules@0.13.0
-softwarerero:accounts-t9n
+#softwarerero:accounts-t9n
 ecmascript
 khrone:img-qrcode
 deepwell:raven
@@ -97,5 +98,5 @@ dynamic-import
 aldeed:collection2-core
 aldeed:schema-deny
 aldeed:schema-index
-socialize:server-time
+#socialize:server-time
 hitchcott:app-dump
