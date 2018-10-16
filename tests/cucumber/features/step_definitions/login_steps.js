@@ -155,6 +155,11 @@ module.exports = function () {
   this.Then(/^I can edit my profile$/, function (callback) {
     // pending();
     client.url(process.env.ROOT_URL + "/yo");
+    client.waitUntil(() => client.isVisible('.pg-loading-center-middle') === false, 10000);
+    // Close alert
+    if (client.isVisible('.bert-content')) {
+      client.click('.bert-content');
+    }
     // goHome(client);
     // this.AuthenticationHelper.loginEmail(username, email, passwd);
     // client.waitForExist('li#login-dropdown-list');

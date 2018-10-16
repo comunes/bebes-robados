@@ -21,7 +21,8 @@
     "webshot": "^0.18.0"
   },
   "devDependencies": {
-    "chimp": "^0.51.1"
+    "chimp": "^0.51.1",
+    "chromedriver": "^2.38.2"
   },
   "optionalDependencies": {
     "fsevents": "^1.0.0"
