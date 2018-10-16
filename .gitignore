@@ -12,3 +12,8 @@ mup-prod.json
 mup-local.json
 .meteor/dev_bundle
 .vscode/*
+.deploy-prod-pm2/
+.screenshots/
+build/
+jslint.xml 
+output.json
