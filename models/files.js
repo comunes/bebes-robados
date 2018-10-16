@@ -42,6 +42,8 @@ var defThrottle = Meteor.isDevelopment ? 1024 * 512 : false; // For downloads
 
 var defCacheControl = 'public, max-age=31536000'; // 1 año
 
+// New file storage (for mup) example:
+// https://github.com/VeliovGroup/Meteor-Files/wiki/MeteorUp-(MUP)-Usage
 Photos = new FilesCollection({
   collectionName: 'Photos',
   downloadRoute: '/ficheros/fotos',
