@@ -10,7 +10,7 @@ Este software está desarrollado con [meteor](https://www.meteor.com/), así que
 
 ```bash
 meteor npm install
-meteor --settings settings.json
+meteor --settings settings.json # or npm run start
 ```
 
 ## Instalación
@@ -20,6 +20,12 @@ Te recomendamos usar `meteor up` junto con `docker` (mup).
 ## Tests
 
 Usamos [CucumberJS](https://github.com/cucumber/cucumber-js) a través de [chimp](https://chimp.readme.io).
+
+Se ejecutan con un:
+```bash
+npm run cucumber
+```
+
 
 ```bash
 # You should start meteor

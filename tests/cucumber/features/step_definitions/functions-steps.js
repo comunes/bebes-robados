@@ -1,12 +1,10 @@
 /*global module require expect */
 
-import {isValidLatLng, undef, noUndef} from '../../../../lib/functions.js';
+import {isValidLatLng, undef, noUndef} from '../../../../imports/lib/functions.js';
 
 module.exports = function () {
   var vnum;
   var u;
-
-
 
   this.Given(/^el número ([\-0-9\.]*)$/, function (num) {
     vnum = num;

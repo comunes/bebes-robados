@@ -46,14 +46,13 @@ module.exports = function () {
     search = searchs[i][0];
     client.url(process.env.ROOT_URL + (lugar === 'home' ? '' : '/bebes'));
     var selector = lugar === 'home' ? 'input[id="home-main-search"]': '#personsTable_filter > label > input';
-    var navSelector = '#personsTable_filter > label > input';
+    // var navSelector = '#personsTable_filter > label > input';
 
     client.waitUntil(function () {
       return client.isVisible('.loading-message') == false;
     }, 5000);
-    client.waitForVisible(navSelector, 5000);
-    client.click(navSelector);
-    client.waitForVisible(selector);
+    client.waitForVisible(selector, 10000);
+    client.click(selector);
     client.setValue(selector, search);
     // http://webdriver.io/api/protocol/keys.html
     // https://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/element/:id/value

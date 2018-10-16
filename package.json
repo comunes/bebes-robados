@@ -2,7 +2,9 @@
   "name": "bebes-robados",
   "private": true,
   "scripts": {
-    "start": "meteor --settings settings.json"
+    "start": "meteor --settings settings.json",
+    "cucumber": "./node_modules/.bin/chimp tests/chimp.js --path=tests/cucumber/features --ddp=http://localhost:3000",
+    "cucumber:watch": "./node_modules/.bin/chimp tests/chimp.js --path=tests/cucumber/features --watch --ddp=http://localhost:3000"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
